@@ -4,6 +4,12 @@
 # License: GNU GPL v3+
 # URL: https://github.com/aliaksma/ubuntu-setup
 
+# This is the starting point of the setup script.
+# It installs git, clones the repo and starts the
+# installer/setup
+
+# Shell exits immediatley if any command
+# returns a non-zero status (an error)
 set -e
 
 splash='=========================
@@ -14,13 +20,19 @@ echo -e "$splash"
 echo "=> Ubuntu Setup is for fresh Ubuntu 24.04 installation only!"
 echo -e "\nBegin installation (or abort with Ctrl+c)...\n"
 
-# Remove any old copies of setup
+# Update Ubuntu's local package index
+sudo apt-get update >/dev/null
+# Install git
+sudo apt-get install -y git >/dev/null
+
+# Remove any old copies of ubuntu-setup dir
 if [ -d "$HOME/.local/share/ubuntu-setup" ]; then
     rm -rf "$HOME/.local/share/ubuntu-setup"
 fi
 
+# Clone repo from github to ~/.local/share/ubuntu-setup
 echo "Cloning Ubuntu Setup files..."
-git clone --quiet https://github.com/aliaksma/ubuntu-setup.git ~/.local/share/ubuntu-setup
+git clone --quiet https://github.com/aliaksma/ubuntu-setup.git "$HOME/.local/share/ubuntu-setup"
 
 echo "Starting installer..."
 source "$HOME/.local/share/ubuntu-setup/install.sh"
