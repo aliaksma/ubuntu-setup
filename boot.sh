@@ -23,12 +23,13 @@ echo -e "\nBegin installation (or abort with Ctrl+c)...\n"
 # Update Ubuntu's local package index
 echo "Updating local package index..."
 sudo apt-get update >/dev/null
+echo "Done updating..."
 
 # Install git
 echo "Installing git..."
 sudo apt-get install -y git >/dev/null
 
-# Remove any old copies of ubuntu-setup dir
+# Remove any old copies of ubuntu-setup dir if they exist
 if [ -d "$HOME/.local/share/ubuntu-setup" ]; then
     rm -rf "$HOME/.local/share/ubuntu-setup"
 fi

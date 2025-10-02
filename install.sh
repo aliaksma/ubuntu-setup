@@ -18,18 +18,19 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
     gsettings set org.gnome.desktop.screensaver lock-enabled false
     gsettings set org.gnome.desktop.session idle-delay 0
 
-    echo "Installing terminal and desktop tools..."
+    echo "Installing your preferred applications..."
 
-    # Install terminal tools
-#    source ~/.local/share/omakub/install/terminal.sh
+    # Install programs
+    source "~/.local/share/omakub/install/terminal.sh"
 
-    # Install desktop tools and tweaks
-#    source ~/.local/share/omakub/install/desktop.sh
-
+    # Setup folders?
+    # Setup dotfies?
+    
     # Revert to normal idle and lock settings
     gsettings set org.gnome.desktop.screensaver lock-enabled true
     gsettings set org.gnome.desktop.session idle-delay 300
 else
-    echo "Only installing terminal tools..."
-#    source ~/.local/share/omakub/install/terminal.sh
+    echo "You don't seem to be using Gnome Desktop!"
+    echo "Setup stopped!"
+    exit 1
 fi
