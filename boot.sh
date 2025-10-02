@@ -5,8 +5,8 @@
 # URL: https://github.com/aliaksma/ubuntu-setup
 
 # This is the starting point of the setup script.
-# It installs git, clones the repo and starts the
-# installer/setup
+# It installs git, clones the repo to the users home file system
+# and starts the installer/setup
 
 # Shell exits immediatley if any command
 # returns a non-zero status (an error)
@@ -21,8 +21,11 @@ echo "=> Ubuntu Setup is for fresh Ubuntu 24.04 installation only!"
 echo -e "\nBegin installation (or abort with Ctrl+c)...\n"
 
 # Update Ubuntu's local package index
+echo "Updating local package index..."
 sudo apt-get update >/dev/null
+
 # Install git
+echo "Installing git..."
 sudo apt-get install -y git >/dev/null
 
 # Remove any old copies of ubuntu-setup dir
