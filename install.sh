@@ -11,6 +11,8 @@ set -e
 # Give people a chance to retry running the installation
 trap 'echo "Ubuntu setup failed! You can retry by running: source ~/.local/share/ubuntu-setup/install.sh"' ERR
 
+echo "Starting installer..."
+
 # If user is running Gnome this ensures computer
 # doesn't go to sleep or lock while installing
 if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
@@ -18,14 +20,8 @@ if [[ "$XDG_CURRENT_DESKTOP" == *"GNOME"* ]]; then
     gsettings set org.gnome.desktop.screensaver lock-enabled false
     gsettings set org.gnome.desktop.session idle-delay 0
 
-    echo "Installing your preferred applications..."
+    source "$HOME/.local/share/ubuntu-setup/install/setup.sh"
 
-    # Install programs
-    source "~/.local/share/omakub/install/terminal.sh"
-
-    # Setup folders?
-    # Setup dotfies?
-    
     # Revert to normal idle and lock settings
     gsettings set org.gnome.desktop.screensaver lock-enabled true
     gsettings set org.gnome.desktop.session idle-delay 300

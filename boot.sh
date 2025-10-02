@@ -38,5 +38,4 @@ fi
 echo "Cloning Ubuntu Setup files..."
 git clone --quiet https://github.com/aliaksma/ubuntu-setup.git "$HOME/.local/share/ubuntu-setup"
 
-echo "Starting installer..."
 source "$HOME/.local/share/ubuntu-setup/install.sh"
